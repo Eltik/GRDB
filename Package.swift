@@ -18,12 +18,14 @@ let package = Package(
         .library(name: "GRDB-dynamic", type: .dynamic, targets: ["GRDB"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/sbooth/CSQLite.git", from: "3.44.2")
+        .package(url: "https://github.com/sbooth/CSQLite.git", from: "3.44.2"),
+        .package(url: "https://github.com/stephencelis/SQLite.swift.git", from: "0.14.0")
     ],
     targets: [
         .target(
             name: "GRDB",
             dependencies: [
+                .product(name: "SQLite", package: "SQLite.swift"),
                 .product(name: "CSQLite", package: "CSQLite")
             ],
             path: "GRDB",
